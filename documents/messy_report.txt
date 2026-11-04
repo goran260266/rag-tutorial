@@ -1,0 +1,20 @@
+<h2>Data Science Report</h2>
+<p>Data Science combines    statistics, programming,
+   and domain expertise.</p>
+
+<b>Key Methods:</b>
+<ul>
+<li>Regression		analysis for predictions</li>
+<li>Classification   for   categorizing data</li>
+<li>Clustering     to find    patterns</li>
+</ul>
+
+<p>   Machine Learning automates     the model building process.
+   It uses   algorithms that   learn from <i>training data</i>.</p>
+
+
+
+<p>Deep Learning   is a    subset of Machine Learning.
+		It uses neural    networks with   many layers.</p>
+
+   <br>Python and R   are the most   popular languages    for Data Science.<br>

@@ -1,0 +1,183 @@
+# Neural Networks and Deep Learning
+
+## What is a Neural Network?
+
+Artificial neural networks are computational models loosely inspired by the
+structure of biological brains. While the analogy to biology provides useful
+intuition, modern neural networks are best understood as mathematical function
+approximators composed of simple, repeatable units called neurons or nodes.
+
+An artificial neuron receives a set of numeric inputs, multiplies each input by
+a corresponding weight, sums the weighted values, adds a bias term, and passes
+the result through an activation function to produce an output. Mathematically,
+for inputs x_1, x_2, ..., x_n with weights w_1, w_2, ..., w_n and bias b, the
+neuron computes output = f(w_1*x_1 + w_2*x_2 + ... + w_n*x_n + b), where f is
+the activation function.
+
+The activation function introduces non-linearity into the network. Without it,
+stacking multiple layers of neurons would produce nothing more than a single
+linear transformation, regardless of depth. The most commonly used activation
+function today is the Rectified Linear Unit (ReLU), which simply outputs the
+input if it is positive and zero otherwise: ReLU(x) = max(0, x). Despite its
+simplicity, ReLU works remarkably well in practice and trains faster than older
+alternatives. Other activation functions include the sigmoid function, which
+squashes values to the range (0, 1) and was historically important for binary
+classification, and the hyperbolic tangent (tanh), which maps values to (-1, 1).
+
+A single neuron can learn simple decision boundaries, but real-world problems
+require many neurons working together in structured arrangements called layers.
+
+## Network Architecture
+
+Neural networks organize neurons into layers. The input layer receives the raw
+data, with one neuron per input feature. The output layer produces the network's
+predictions: a single neuron for regression tasks, or multiple neurons for
+classification where each neuron corresponds to a possible class. Between input
+and output lie one or more hidden layers that learn intermediate representations
+of the data.
+
+The term "deep learning" refers to neural networks with multiple hidden layers.
+A network with two or three hidden layers might have dozens to hundreds of
+neurons per layer, while modern large-scale models can have hundreds of layers
+with thousands of neurons each. Each layer transforms its input and passes the
+result to the next layer, progressively building more abstract representations.
+Early layers might detect simple patterns like edges or basic word associations,
+while deeper layers combine these into complex concepts like object recognition
+or sentence meaning.
+
+In a fully connected (or dense) layer, every neuron connects to every neuron in
+the adjacent layers. The total number of learnable parameters (weights and
+biases) grows rapidly with network size. For example, a fully connected layer
+with 1000 input neurons and 1000 output neurons has over one million weight
+parameters plus 1000 biases. Modern large language models contain billions of
+parameters, requiring significant computational resources for both training and
+inference.
+
+The choice of architecture -- how many layers, how many neurons per layer, which
+activation functions to use -- constitutes the set of hyperparameters that a
+practitioner must decide before training begins. These choices significantly
+affect both the network's capacity to learn complex patterns and its tendency
+to overfit the training data.
+
+## How Neural Networks Learn
+
+Training a neural network is an iterative optimization process. The network
+starts with randomly initialized weights, makes predictions that are initially
+poor, and gradually improves by adjusting its weights to reduce prediction
+errors.
+
+The process begins with a forward pass: input data flows through the network
+layer by layer, producing a prediction at the output. A loss function then
+quantifies how wrong this prediction is compared to the true answer. For
+regression problems, the mean squared error (MSE) is commonly used, measuring
+the average squared difference between predictions and actual values. For
+classification, cross-entropy loss measures the divergence between the
+predicted probability distribution and the true class labels.
+
+Once the loss is computed, backpropagation determines how much each weight in
+the network contributed to the error. This algorithm applies the chain rule of
+calculus backwards through the network, computing the gradient of the loss with
+respect to every weight. The gradient indicates both the direction and magnitude
+of the steepest increase in loss, so moving weights in the opposite direction
+reduces the error.
+
+Gradient descent then updates each weight by subtracting a fraction of its
+gradient. This fraction is controlled by the learning rate, one of the most
+important hyperparameters in neural network training. A learning rate that is
+too large causes training to oscillate wildly or diverge entirely, while one
+that is too small makes training prohibitively slow. Modern optimizers like Adam
+(Adaptive Moment Estimation) maintain per-parameter learning rates that adapt
+during training, combining the benefits of two earlier techniques: momentum
+(which accelerates convergence in consistent gradient directions) and RMSProp
+(which scales learning rates based on recent gradient magnitudes). Adam has
+become the default optimizer for most deep learning applications.
+
+Training proceeds in epochs, where one epoch represents a complete pass through
+the entire training dataset. Rather than computing gradients over the full
+dataset at once (which would be computationally expensive), mini-batch training
+processes small subsets of data (typically 32 to 256 samples) at a time. Each
+mini-batch produces a gradient estimate that is noisier but much cheaper to
+compute, allowing frequent weight updates that accelerate convergence. The
+training loop repeats: forward pass, compute loss, backward pass
+(backpropagation), update weights, and then process the next mini-batch.
+
+Training is typically monitored by tracking loss on both the training data and
+a separate validation set. When the training loss continues to decrease but the
+validation loss begins to increase, the model is overfitting -- memorizing
+training examples rather than learning generalizable patterns.
+
+## Common Types of Neural Networks
+
+Different problem domains have inspired specialized neural network
+architectures, each designed to exploit the structure inherent in particular
+types of data.
+
+Convolutional Neural Networks (CNNs) are designed for grid-structured data,
+particularly images. Instead of fully connecting every neuron, CNNs use small
+filters (or kernels) that slide across the input image, detecting local
+features such as edges, textures, and color gradients. By stacking multiple
+convolutional layers, the network learns a hierarchy of features: early layers
+detect simple patterns like horizontal or vertical edges, middle layers combine
+these into textures and shapes, and deeper layers recognize complex objects like
+faces or vehicles. CNNs also use pooling layers that progressively reduce the
+spatial dimensions, making the network invariant to small translations and
+reducing the number of parameters.
+
+Recurrent Neural Networks (RNNs) are designed for sequential data such as text,
+speech, and time series. An RNN processes one element of the sequence at a time
+while maintaining a hidden state that carries information from previous steps.
+In theory, this allows the network to capture long-range dependencies in
+sequences. In practice, standard RNNs struggle with long sequences due to the
+vanishing gradient problem: during backpropagation through many time steps,
+gradients shrink exponentially, preventing the network from learning long-term
+patterns. Long Short-Term Memory (LSTM) networks and Gated Recurrent Units
+(GRUs) address this limitation through gating mechanisms that control the flow
+of information, allowing the network to selectively remember or forget
+information over long sequences.
+
+The Transformer architecture, introduced in 2017, has largely replaced RNNs for
+language processing tasks. Instead of processing sequences one element at a
+time, Transformers use an attention mechanism that computes relationships
+between all positions in a sequence simultaneously. This enables parallel
+processing during training (making Transformers much faster to train than RNNs)
+and allows the model to directly capture long-range dependencies regardless of
+distance. The self-attention mechanism computes how relevant each word in a
+sentence is to every other word, enabling the model to understand context and
+meaning at a global level. Large language models such as GPT and BERT are built
+on the Transformer architecture, trained on vast text corpora to learn general
+language understanding that can be adapted to specific tasks.
+
+## Practical Considerations
+
+Training neural networks presents several practical challenges beyond
+architecture design. Overfitting is a persistent concern, especially with large
+networks that have millions or billions of parameters -- far more than the
+number of training examples. Several regularization techniques help mitigate
+this risk. Dropout randomly deactivates a fraction of neurons during each
+training step, forcing the network to develop redundant representations and
+preventing individual neurons from becoming overly specialized. Weight decay
+(L2 regularization) adds a penalty proportional to the magnitude of weights,
+encouraging smaller, more generalizable parameter values. Early stopping
+monitors validation performance during training and halts the process when
+performance begins to degrade, preventing the model from memorizing noise in
+the training data.
+
+Computational requirements represent another significant consideration.
+Training neural networks involves massive numbers of matrix multiplications,
+which are naturally parallelizable. Graphics Processing Units (GPUs),
+originally designed for rendering computer graphics, are ideally suited for
+these parallel computations and can accelerate training by orders of magnitude
+compared to traditional CPUs. For the largest models, training is distributed
+across multiple GPUs or even multiple machines working in concert.
+
+Transfer learning has become a standard practice that dramatically reduces the
+data and compute required for specific tasks. Rather than training a neural
+network from scratch, practitioners start with a model that has been pre-trained
+on a large, general-purpose dataset (such as ImageNet for vision or large text
+corpora for language). The pre-trained model has already learned useful
+representations of features, and fine-tuning it on a smaller, task-specific
+dataset allows these representations to be adapted with far less data than
+would otherwise be required. This approach has proven particularly powerful in
+natural language processing, where large pre-trained language models serve as
+foundation models that can be fine-tuned for tasks ranging from sentiment
+analysis to question answering.

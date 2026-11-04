@@ -1,0 +1,16 @@
+<h1>AI Newsletter &amp; Updates</h1>
+
+<b>K&#252;nstliche Intelligenz</b> ver&#228;ndert die Welt.
+Der Preis betr&#228;gt 50&#x20AC; pro Monat.
+
+Professor M&#252;ller sagt: &#8222;KI ist die Zukunft.&#8220;
+``Machine Learning`` ist ein Teilgebiet der KI.
+Das Modell ist &ldquo;state of the art&rdquo;.
+
+Sprachmodelle&nbsp;&nbsp;&nbsp;verarbeiten nat&#252;rliche Sprache.
+Sie k&#246;nnen Texte&nbsp;zusammenfassen und &#252;bersetzen.
+
+Die Studie zeigt &ndash; <em>KI spart 30% der Zeit.</em>
+Mehr Infos unter: info@ai-newsletter.example.com
+
+&copy; 2024 AI Newsletter. Alle Rechte vorbehalten.
