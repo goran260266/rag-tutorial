@@ -7,9 +7,36 @@ Ein Basis-Projekt für ein Retrieval-Augmented Generation (RAG) System mit LangC
 ```text
 C:\Artificial Intelligence\rag_tutorial\
 ├── .venv/                      # Virtuelle Python-Umgebung
+├── .env                        # Umgebungsvariablen (API-Keys)
+├── .gitignore                  # Von Git ignorierte Dateien
+├── .python-version             # Python-Version für uv
+├── documents/                  # Beispieldokumente (txt, html) für Loader und Splitting
 ├── src/
 │   └── rag_tutorial/
-│       └── __init__.py         # Hauptmodul des Tutorials
+│       ├── __init__.py                     # Hauptmodul des Tutorials
+│       ├── 01_document_loader.ipynb        # Dokumente laden
+│       ├── 02_text_splitting.ipynb         # Texte in Chunks aufteilen
+│       ├── 03_choosing_embedding_models.ipynb  # Embedding-Modelle auswählen
+│       ├── 04_similarity_calculations.ipynb    # Ähnlichkeitsberechnungen
+│       ├── 05_ChromaDB _vector.ipynb       # Vektordatenbank ChromaDB
+│       ├── 06_FAISS_vector_database.ipynb  # Vektordatenbank FAISS
+│       ├── 07_quadrant_vector.ipynb        # Vektordatenbank Qdrant
+│       ├── 08_RAG_chromadb.ipynb           # RAG-Pipeline mit ChromaDB
+│       ├── 09_RAG_quadrant.ipynb           # RAG-Pipeline mit Qdrant
+│       ├── 10_LLM_judge.ipynb              # Evaluierung mit LLM als Richter
+│       ├── 11_DeepEval.ipynb               # Evaluierung mit DeepEval
+│       ├── clean_text.py                   # Textbereinigung
+│       ├── rag_utils.py                    # Hilfsfunktionen für RAG
+│       ├── vector_embeddings_plots.py      # Visualisierung von Embeddings
+│       ├── visualize_chunks.py             # Visualisierung von Chunks
+│       ├── Metriken bei RAG-Evaluierung.md # Dokumentation der Evaluierungsmetriken
+│       ├── py.typed                        # Marker für Typisierung
+│       ├── chroma_db/                      # Persistierte ChromaDB-Daten
+│       ├── my_rag_db/                      # Persistierte ChromaDB-Daten (RAG)
+│       ├── rag_db/                         # Persistierte ChromaDB-Daten (RAG)
+│       ├── faiss_index/                    # Persistierter FAISS-Index
+│       ├── data/                           # Daten für die Notebooks
+│       └── img/                            # Abbildungen
 ├── tests/
 │   └── test_rag.py            # Testverzeichnis
 ├── pyproject.toml              # Projektkonfiguration und Abhängigkeiten
