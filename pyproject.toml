@@ -6,7 +6,8 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "langchain>=0.3.0",
-    "langchain-community>=0.3.0",
+    "langchain-community>=0.3.0,<0.4",
+    "langchain-classic>=1.0.0",
     "langchain-openai>=0.2.0",
     "chromadb>=0.5.0",
     "python-dotenv>=1.0.0",
@@ -32,10 +33,13 @@ dependencies = [
     "pandas>=3.1.0",
     "fastembed>=0.9.1",
     "deepeval>=4.2,<4.3",
+    "ipywidgets>=8.1.9",
+    "ragas>=0.4.3",
+    "langchain-huggingface>=1.2.3",
+    "pinecone>=6.0.0,<8.0.0",
+    "pinecone-text>=0.11.0",
+    "langchain-pinecone>=0.2.13",
 ]
-
-[project.scripts]
-
 
 [dependency-groups]
 dev = [
@@ -45,6 +49,9 @@ dev = [
     "pytest-cov>=7.1.0",
     "ruff>=0.15.0",
 ]
+
+[project.scripts]
+chroma-ragas = "rag_tutorial.chroma_rag_pipeline_ragas:run"
 
 [build-system]
 requires = ["uv_build>=0.12.6,<0.13.0"]

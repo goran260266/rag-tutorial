@@ -447,7 +447,10 @@ def create_rag_system(
 
     if docs_content is None:
         docs_content = DEFAULT_DOCS[language]
-    documents = [Document(page_content=d) for d in docs_content]
+    documents = [
+        d if isinstance(d, Document) else Document(page_content=d)
+        for d in docs_content
+    ]
 
     embeddings = OpenAIEmbeddings(
         api_key=api_key,

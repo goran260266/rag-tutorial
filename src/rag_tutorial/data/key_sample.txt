@@ -1,0 +1,17 @@
+RAG (Retrieval Augmented Generation) Systems
+
+RAG systems combine the power of retrieval and generation to provide accurate, contextual responses.
+
+Key Benefits:
+1. Reduces hallucinations in AI responses
+2. Enables AI to access up-to-date information
+3. Provides source attribution for answers
+4. Allows domain-specific knowledge integration
+
+How RAG Works:
+- Documents are processed and stored in a vector database
+- User queries are converted to embeddings
+- Similar document chunks are retrieved
+- Retrieved context is used to generate accurate responses
+
+Popular vector databases for RAG include ChromaDB, Pinecone, Weaviate, and FAISS.
