@@ -10,6 +10,8 @@ C:\Artificial Intelligence\rag_tutorial\
 ├── .env                        # Umgebungsvariablen (API-Keys)
 ├── .gitignore                  # Von Git ignorierte Dateien
 ├── .python-version             # Python-Version für uv
+├── chroma_db/                  # Persistierte ChromaDB-Daten (Projektwurzel)
+├── coverage.json               # Coverage-Bericht (temporär)
 ├── documents/                  # Beispieldokumente (txt, html) für Loader und Splitting
 ├── src/
 │   └── rag_tutorial/
@@ -18,27 +20,34 @@ C:\Artificial Intelligence\rag_tutorial\
 │       ├── 02_text_splitting.ipynb         # Texte in Chunks aufteilen
 │       ├── 03_choosing_embedding_models.ipynb  # Embedding-Modelle auswählen
 │       ├── 04_similarity_calculations.ipynb    # Ähnlichkeitsberechnungen
-│       ├── 05_ChromaDB _vector.ipynb       # Vektordatenbank ChromaDB
-│       ├── 06_FAISS_vector_database.ipynb  # Vektordatenbank FAISS
-│       ├── 07_quadrant_vector.ipynb        # Vektordatenbank Qdrant
-│       ├── 08_RAG_chromadb.ipynb           # RAG-Pipeline mit ChromaDB
-│       ├── 09_RAG_quadrant.ipynb           # RAG-Pipeline mit Qdrant
-│       ├── 10_LLM_judge.ipynb              # Evaluierung mit LLM als Richter
+│       ├── 07_Quadrant_vectorstore.ipynb   # Vektordatenbank Qdrant
+│       ├── 8_Qdrant_retriever-filter.ipynb # Qdrant-Retriever mit Metadatenfilter
+│       ├── 09_Qdrant_RAG-chain.ipynb       # RAG-Pipeline mit Qdrant
+│       ├── 10_Qdrant_LLM-judge.ipynb       # Evaluierung (Qdrant) mit LLM als Richter
 │       ├── 11_DeepEval.ipynb               # Evaluierung mit DeepEval
+│       ├── 12_ChromaDB_vectorStore.ipynb   # Vektordatenbank ChromaDB
+│       ├── 13_ChromaDB_RetrievalQA-chain.ipynb  # RAG-Pipeline (RetrievalQA) mit ChromaDB
+│       ├── 14_ChromaDB_Eval_LLM-Judge.ipynb     # Evaluierung (ChromaDB) mit LLM als Richter
+│       ├── 15_Pinacone.ipynb               # Vektordatenbank Pinecone
+│       ├── 16_FAISS_vector_database.ipynb  # Vektordatenbank FAISS
+│       ├── Workshop_RAG_build_eval.ipynb   # Workshop: RAG aufbauen und evaluieren
+│       ├── chroma_rag_pipeline_ragas.py    # RAG-Pipeline mit RAGAS-Evaluierung
 │       ├── clean_text.py                   # Textbereinigung
 │       ├── rag_utils.py                    # Hilfsfunktionen für RAG
 │       ├── vector_embeddings_plots.py      # Visualisierung von Embeddings
 │       ├── visualize_chunks.py             # Visualisierung von Chunks
 │       ├── Metriken bei RAG-Evaluierung.md # Dokumentation der Evaluierungsmetriken
+│       ├── RAGAS_Improving.md              # Hinweise zur Verbesserung der RAGAS-Werte
+│       ├── pinecone_bm25_values.json       # BM25-Werte für Pinecone (Hybrid-Suche)
 │       ├── py.typed                        # Marker für Typisierung
 │       ├── chroma_db/                      # Persistierte ChromaDB-Daten
 │       ├── my_rag_db/                      # Persistierte ChromaDB-Daten (RAG)
-│       ├── rag_db/                         # Persistierte ChromaDB-Daten (RAG)
 │       ├── faiss_index/                    # Persistierter FAISS-Index
 │       ├── data/                           # Daten für die Notebooks
 │       └── img/                            # Abbildungen
 ├── tests/
-│   └── test_rag.py            # Testverzeichnis
+│   ├── test_fallback_embeddings.py  # Tests für Fallback-Embeddings
+│   └── test_rag.py                  # Tests für die RAG-Funktionen
 ├── pyproject.toml              # Projektkonfiguration und Abhängigkeiten
 ├── uv.lock                     # Lock-Datei für exakte Paketversionen
 └── README.md                   # Projektdokumentation
